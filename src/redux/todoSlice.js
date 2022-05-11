@@ -28,8 +28,8 @@ const todoSlice = createSlice({
     },
         edittodo : (state,action) => {
             const index = state.findIndex ((el) => el.id === action.payload.id);
-            // console.log(action.payload.id)
-            // state[index].title=action.payload.title;
+           
+            state[index].title=action.payload.title;
             
     },
 }

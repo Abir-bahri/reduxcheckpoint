@@ -8,7 +8,7 @@ import { edittodo} from '../redux/todoSlice'
 function EditTodo(props) {
   const state = useSelector((state) => state.todoSlice);
   const [input, setInput] = useState();
-  console.log (state)
+
   const [show, setShow] = useState();
   const dispatch = useDispatch();
 

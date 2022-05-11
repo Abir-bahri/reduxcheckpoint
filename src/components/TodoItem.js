@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
 import { toggleComplete , deleteTodo } from '../redux/todoSlice';
 import EditTodo from './EditTodo';
 
@@ -12,6 +12,7 @@ const TodoItem = ({ id, title, completed }) => {
 	const handleDeleteClick = () => {
 		dispatch(deleteTodo({ id : id }));
 	};
+	const todos = useSelector((state)=>state.todos);
 
 	return (
 		<li className={`list-group-item ${completed && 'list-group-item-success'}`}>
@@ -22,7 +23,25 @@ const TodoItem = ({ id, title, completed }) => {
 				</span>
 				<button className='btn btn-danger' onClick={handleDeleteClick}>Delete</button>
 			</div>
-			<EditTodo />
+
+			<div className={todos.length === 0 ? "active" : ""} >
+			 
+        {todos
+          .filter((val) => {
+            
+              if (val.completed === true) {
+                return val;
+              }
+            else if 
+              (val.completed=== false) {
+                return val;
+              }
+            
+          })
+		}
+		// </div>
+			<EditTodo id={id} />
+			
 		</li>
 	);
 };
